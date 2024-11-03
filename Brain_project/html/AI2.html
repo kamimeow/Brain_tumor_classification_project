@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/reset.css" />
+
+    <meta charset="UTF-8" />
+    <!--Отключение формирование ссылки у номера телефона на IOS -->
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <title>AI Brain tumor diagnostics</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <div class="header__container _container">
+          <nav class="header__menu menu">
+          
+                <ul class="menu__list">
+                  <li class="menu__item">
+                    <a href="mainpage.html" class="menu__link">ГЛАВНАЯ</a>
+                  </li>
+                  <li class="menu__item" id="aiItem">
+                    <a href="AI.html" class="menu__link">НЕЙРОСЕТЬ</a>
+                </li>
+                <li class="menu__item" id="profileItem" style="display: none;">
+                    <a href="profile.html" class="menu__link">ЛИЧНЫЙ КАБИНЕТ</a>
+                </li>
+                <li class="menu__item_last" id="authItem">
+                    <a href="autorization.html" class="menu__link" id="authLink">ВХОД</a>
+                </li>
+              
+            
+          </nav>
+        </div>
+      </header>
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const userData = localStorage.getItem("userData");
+    
+            // Если userData есть, то отображаем пункт "ЛИЧНЫЙ КАБИНЕТ" и меняем текст на "ВЫХОД"
+            if (userData) {
+                document.getElementById("profileItem").style.display = "block";
+                document.getElementById("authLink").textContent = "ВЫХОД";
+                document.getElementById("authLink").addEventListener("click", function (event) {
+                    event.preventDefault();
+                    localStorage.removeItem("userData");
+                    localStorage.removeItem("diagnosis");
+                    localStorage.removeItem("diagnosisHistory");
+                    document.getElementById("profileItem").style.display = "none";
+                    document.getElementById("aiItem").style.pointerEvents = "none";
+                    document.getElementById("authLink").textContent = "ВХОД";
+                    document.getElementById("authLink").href = "autorization.html";
+                    window.location.href = "mainpage.html"; // Перенаправление на главную страницу
+                });
+            } else {
+                document.getElementById("aiItem").style.pointerEvents = "none";
+            }
+        });
+    </script>
+      <main class="page">
+        <div class="page__main-block main-block">
+          <div class="main-block__container _container">
+            <div class="main-block__body">
+              <div class="ai-block__boxing">
+                
+                
+                <div class="ai-block__right-part">
+                 <h1 class="diagnostics-result">Результат диагностики: <span id="diag"></span></h1>
+                 <h2 class="result">Нейросеть не гарантирует точности в диагностике</h2>
+                </div>
+              </div>
+            </div>
+            
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src='/js/ai2.js'></script>
+  </body>
+</html>

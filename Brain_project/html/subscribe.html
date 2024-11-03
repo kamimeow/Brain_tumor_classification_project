@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/reset.css" />
+
+    <meta charset="UTF-8" />
+    <!--Отключение формирование ссылки у номера телефона на IOS -->
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <title>AI Brain tumor diagnostics</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <div class="header__container _container">
+          <nav class="header__menu menu">
+          
+                <ul class="menu__list">
+                  <li class="menu__item">
+                    <a href="mainpage.html" class="menu__link">ГЛАВНАЯ</a>
+                  </li>
+                  <li class="menu__item" id="aiItem">
+                    <a href="AI.html" class="menu__link">НЕЙРОСЕТЬ</a>
+                </li>
+                <li class="menu__item" id="profileItem" style="display: none;">
+                    <a href="profile.html" class="menu__link">ЛИЧНЫЙ КАБИНЕТ</a>
+                </li>
+                <li class="menu__item_last" id="authItem">
+                    <a href="autorization.html" class="menu__link" id="authLink">ВХОД</a>
+                </li>
+              
+            
+          </nav>
+        </div>
+      </header>
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const userData = localStorage.getItem("userData");
+    
+            // Если userData есть, то отображаем пункт "ЛИЧНЫЙ КАБИНЕТ" и меняем текст на "ВЫХОД"
+            if (userData) {
+                document.getElementById("profileItem").style.display = "block";
+                document.getElementById("authLink").textContent = "ВЫХОД";
+                document.getElementById("authLink").addEventListener("click", function (event) {
+                    event.preventDefault();
+                    localStorage.removeItem("userData");
+                    localStorage.removeItem("diagnosis");
+                    localStorage.removeItem("diagnosisHistory");
+                    document.getElementById("profileItem").style.display = "none";
+                    document.getElementById("aiItem").style.pointerEvents = "none";
+                    document.getElementById("authLink").textContent = "ВХОД";
+                    document.getElementById("authLink").href = "autorization.html";
+                    window.location.href = "mainpage.html"; // Перенаправление на главную страницу
+                });
+            } else {
+                document.getElementById("aiItem").style.pointerEvents = "none";
+            }
+        });
+    </script>
+      <main class="page">
+        <div class="page__main-block main-block">
+          <div class="main-block__container _container">
+            <div class="main-block__body">
+              <div class="main-block__boxing">
+                <div class="page__reg-form-container">
+                  <h1 class="form-title">Подписка</h1>
+                  <h2 class="form-title-name">НОВИЧОК</h2>
+                  <p class="price">199 Рублей</p>
+                  <div class="form-buttons">
+                     <a href="" class="f-button-1" id="subscribeButton1">Приобрести</a>
+                    <!-- <button class="f-button-1" id="subscribeButton1">Приобрести</button> -->
+                    <!-- <button class="button">Создать аккаунт</button> -->
+                  </div>
+                  <p class="text-1">Безлимитные диагностики</p>
+                  <p class="text-2">Срок действия: 1 мес.</p>
+                </div>
+                <div class="page__reg-form-container">
+                  <h1 class="form-title">Подписка</h1>
+                  <h2 class="form-title-name">НЕЙРОСЕТЬ</h2>
+                  <p class="price">999 Рублей</p>
+                  <div class="form-buttons">
+                    <a href="" id="subscribeButton2"  class="f-button-2">Приобрести</a>
+                    
+                    <!-- <button class="button">Создать аккаунт</button> -->
+                  </div>
+                  <p class="text-1">Безлимитные диагностики</p>
+                  <p class="text-2">Срок действия: 12 мес.</p>
+                </div>
+                <div class="page__reg-form-container">
+                  <h1 class="form-title">Подписка</h1>
+                  <h2 class="form-title-name">МАСТЕР</h2>
+                  <p class="price">499 Рублей</p>
+                  <div class="form-buttons">
+                    <a href="" id="subscribeButton3" class="f-button-1">Приобрести</a>
+                    <!-- <button class="button">Создать аккаунт</button> -->
+                  </div>
+                  <p class="text-1">Безлимитные диагностики</p>
+                  <p class="text-2">Срок действия: 3 мес.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src='/js/sub.js'></script>
+  </body>
+</html>
